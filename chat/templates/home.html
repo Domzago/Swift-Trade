@@ -1,0 +1,54 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block title %}Home{% endblock %}
+
+{% block content %} 
+        <section class="py-0">
+            <div class="container px-2 px-lg-2 mt-2 mb-2">
+                <div class="row gx-3 gx-lg-3 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+                    {% for item in items %}
+                    <div class="col mb-4 mt-4">
+                        <div class="card h-100">
+                            <img class="card-img-top" src="{{item.image.url}}" alt="..." />   
+                            <div class="card-body p-4">
+                                <div class="text-center">                
+                                    <h5 class="fw-bolder">{{item.name}}</h5>
+                                    <p class="text-sm">${{item.price}}</p>                       
+                                    
+                                </div>           
+                            </div>
+                            <!-- Product actions-->
+                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                                
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="{% url 'detail' item.id %}">Contact Seller</a></div>
+                            </div>
+                            
+                        </div>
+                    </div>
+                   {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+<div class="text-center mb-3 mt-3">
+
+    {% if items.has_previous %}
+        <a class="btn btn-sm btn-outline-info" href="?page=1">First</a>
+        <a class="btn btn-sm btn-outline-info" href="?page={{items.previous_page_number}}">Previous</a>
+    {% endif %}
+
+    Page {{items.number}} of {{items.paginator.num_pages}}
+
+    {% if items.has_next %}
+        <a class="btn btn-sm btn-outline-info" href="?page={{items.next_page_number}}">Next</a>
+        <a class="btn btn-sm btn-outline-info" href="?page={{items.paginator.num_pages}}">Last</a>
+    {% endif %}
+</div>
+
+<div class="text-center mb-3 mt-3">
+
+</div>
+
+{% endblock %}

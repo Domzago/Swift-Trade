@@ -1,0 +1,12 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block title %}Logout{% endblock %}
+
+{% block content %}
+    <div class=" mb-4 mt-4 text-center">
+
+        <h2><strong>You have logged out</strong></h2>
+            <a class="text-secondary" href="{% url 'login' %}">Login Again</a>
+
+    </div>
+{% endblock %}

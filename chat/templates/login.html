@@ -1,0 +1,25 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block title %}Login{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <form method="post" action=".">
+            {% csrf_token %}
+
+            <div>
+                <h2 class="mb-4 mt-4">Login</h2><br>
+                
+
+                <label for="inputUsername" class="sr-only">Username</label>
+                <input type="text" id="inputUsername" class="form-control" placeholder="User Name" name="username" required autofocus><br>
+
+                <label for="inputPassword" class="sr-only">Password</label>
+                <input type="password" id="inputPassword" class="form-control" placeholder="Password" name="password" required><br>
+                
+                
+            </div>
+            <button type="submit" class="btn btn-outline-info">Login</button>
+        </form>
+    </div>
+{% endblock %}

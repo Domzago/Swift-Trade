@@ -1,0 +1,16 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block title %}Create{% endblock %}
+
+{% block content %}
+    <div class="text-center">
+        <form method="post" action="." enctype="multipart/form-data">
+            {% csrf_token %}
+
+            <div class="sb-forms-latest">
+                {{form.as_p}}
+            </div>
+            <button inputmode="submit" class="btn btn-outline-info">Create Post</button>
+        </form>
+    </div>
+{% endblock %}

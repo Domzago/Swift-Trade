@@ -1,0 +1,16 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block title %}Update{% endblock %}
+
+{% block content %}
+    <div class="text-center">
+        <form method="post" action="." enctype="multipart/form-data">
+            {% csrf_token %}
+
+            <div class="sb-forms-latest">
+                {{form.as_p}}
+            </div>
+            <button inputmode="submit" class=" mb-2 mt-2 btn btn-outline-info">Update Item</button>
+        </form>
+    </div>
+{% endblock %}

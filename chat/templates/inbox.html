@@ -1,0 +1,25 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block title %}Inbox{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <h1 class="mb-3 mt-3">Inbox</h1>
+
+
+        {% for conversation in conversations %}
+            <a href="{% url 'detailconvo' conversation.id %}">
+                <div class="text-secondary">
+                    <div>
+                        {% for member in conversation.members.all %}
+                            {% if member != request.user %}
+                                <p class="mb-3"><strong>{{member.username}}</strong> | {{conversation.modified}}</p>
+                                <p>{{conversation.item.name}}</p>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                </div>
+            </a>
+        {% endfor %}
+    </div>
+{% endblock %}

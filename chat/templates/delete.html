@@ -1,0 +1,17 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block title %}Update{% endblock %}
+
+{% block content %}
+    <div class="text-center">
+        <div>
+            <h2><strong>Are You Sure You Want to Delete ({{item}})?</strong></h2>
+        </div>
+        <form method="post" action="." enctype="multipart/form-data">
+            {% csrf_token %}
+            <div>
+                <a class="btn btn-info" href="{% url 'home' %}">Cancel</a>
+                <button type="submit" class="btn btn-danger">Delete</button>
+            </div>
+        </form>
+{% endblock %}

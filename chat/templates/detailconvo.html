@@ -1,0 +1,28 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block title %}Detail{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <h1 class="mb-2 mt-2">Conversations</h1>
+
+       <div class="p-4">
+        {% for message in conversation.messages.all %}
+
+        <div class="p-6 flex {% if message.created == request.user %} btn btn-success {% else %} btn btn-info {% endif %}"></div>
+        
+            <p class="mb-4"><strong>{{message.created.username}}</strong> | @  {{message.date}} </p>
+            <p>{{message.content}}</p>
+
+        {% endfor %} 
+        </div>
+        
+        <form method="post" action=".">
+            {% csrf_token %}
+
+            {{ form.as_p }}
+            
+            <button type="submit" class=" mb-2 mt-2 btn btn-outline-info">Send</button>
+        </form>
+    </div>
+{% endblock %}
